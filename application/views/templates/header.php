@@ -21,6 +21,9 @@
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/deskapp/'); ?>src/plugins/jvectormap/jquery-jvectormap-2.0.3.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/deskapp/'); ?>vendors/styles/style.css">
 
+	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/deskapp/'); ?>src/plugins/datatables/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/deskapp/'); ?>src/plugins/datatables/css/responsive.bootstrap4.min.css">
+
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
 	<script>
@@ -48,7 +51,7 @@
 						<a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
 						<a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Setting</a>
 						<a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a>
-						<a class="dropdown-item" href="login.html"><i class="dw dw-logout"></i> Log Out</a>
+						<a class="dropdown-item" href="<?= base_url('Auth/logout'); ?>"><i class="dw dw-logout"></i> Log Out</a>
 					</div>
 				</div>
 			</div>

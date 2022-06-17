@@ -91,7 +91,7 @@ class Auth extends CI_Controller
         $this->session->unset_userdata('role_id');
         $this->session->unset_userdata('is_logged_in');
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You Have been LogOut.!</div>');
-        redirect('auth');
+        redirect('Auth');
     }
 
     public function blocked()
