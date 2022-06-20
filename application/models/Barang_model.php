@@ -11,9 +11,8 @@ class Barang_model extends CI_Model
 					b.nama_barang,
 					kb.nama_kategori,
 					sb.nama_satuan,
-					b.harga_jual,
+					b.harga,
 					b.stok,
-					b.harga_modal,
 					b.gambar,
 					b.keterangan
 				FROM barang b 

@@ -41,8 +41,7 @@ class Barang extends CI_Controller
                 'nama_barang' => $this->input->post('nama_barang'),
                 'kategori' => $this->input->post('kategori'),
                 'satuan' => $this->input->post('satuan'),
-                'harga_modal' => $this->input->post('harga_modal'),
-                'harga_jual' => $this->input->post('harga_jual'),
+                'harga' => $this->input->post('harga'),
                 'stok' => $this->input->post('stok'),
                 'keterangan' => $this->input->post('keterangan'),
                 'gambar' => $fileData['file_name']
@@ -76,8 +75,7 @@ class Barang extends CI_Controller
                 'nama_barang' => $this->input->post('nama_barangedit'),
                 'kategori' => $this->input->post('kategoriedit'),
                 'satuan' => $this->input->post('satuanedit'),
-                'harga_modal' => $this->input->post('harga_modaledit'),
-                'harga_jual' => $this->input->post('harga_jualedit'),
+                'harga' => $this->input->post('hargaedit'),
                 'stok' => $this->input->post('stokedit'),
                 'keterangan' => $this->input->post('keteranganedit')
             );
@@ -92,8 +90,7 @@ class Barang extends CI_Controller
                 'nama_barang' => $this->input->post('nama_barangedit'),
                 'kategori' => $this->input->post('kategoriedit'),
                 'satuan' => $this->input->post('satuanedit'),
-                'harga_modal' => $this->input->post('harga_modaledit'),
-                'harga_jual' => $this->input->post('harga_jualedit'),
+                'harga' => $this->input->post('hargaedit'),
                 'stok' => $this->input->post('stokedit'),
                 'keterangan' => $this->input->post('keteranganedit'),
                 'gambar' => $fileData['file_name']

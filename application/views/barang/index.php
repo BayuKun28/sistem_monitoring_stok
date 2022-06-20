@@ -64,33 +64,25 @@
 										<div class="row">
 											<div class="col-md-6 col-sm-12">
 												<div class="form-group">
-													<label>Harga Modal</label>
-													<input type="number" id="harga_modal" name="harga_modal" class="form-control" required>
+													<label>Harga</label>
+													<input type="number" id="harga" name="harga" class="form-control" required>
 												</div>
 											</div>
-											<div class="col-md-6 col-sm-12">
-												<div class="form-group">
-													<label>Harga Jual</label>
-													<input type="number" id="harga_jual" name="harga_jual" class="form-control" required>
-												</div>
-											</div>
-										</div>
-										<div class="row">
 											<div class="col-md-6 col-sm-12">
 												<div class="form-group">
 													<label>Stok</label>
 													<input type="number" id="stok" name="stok" class="form-control" value="0" readonly="true">
 												</div>
 											</div>
+										</div>
+										<div class="row">
 											<div class="col-md-6 col-sm-12">
 												<div class="form-group">
 													<label>Gambar</label>
 													<input type="file" id="file" name="file" accept=".jpg, .png" required>
 												</div>
 											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-12 col-sm-12">
+											<div class="col-md-6 col-sm-12">
 												<div class="form-group">
 													<label>Deskripsi / Keterangan</label>
 													<textarea class="form-control" name="keterangan" id="keterangan" cols="20" rows="2" placeholder="Ketik Keterangan" required></textarea>
@@ -116,8 +108,7 @@
 								<th>Nama Barang</th>
 								<th>Kategori</th>
 								<th>Satuan</th>
-								<th>Harga Modal</th>
-								<th>Harga Jual</th>
+								<th>Harga</th>
 								<th>Stok</th>
 								<th>Gambar</th>
 								<th>Keterangan</th>
@@ -133,8 +124,7 @@
 									<td><?= $s['nama_barang']; ?></td>
 									<td><?= $s['nama_kategori']; ?></td>
 									<td><?= $s['nama_satuan']; ?></td>
-									<td><?= number_format($s['harga_modal']);  ?></td>
-									<td><?= number_format($s['harga_jual']);  ?></td>
+									<td><?= number_format($s['harga']);  ?></td>
 									<td><?= $s['stok']; ?></td>
 									<td> <img src="<?= base_url('upload/barang/'). $s['gambar']; ?> " width="72px" height="72px"> </td>
 									<td><?= $s['keterangan']; ?></td>
@@ -151,8 +141,7 @@
 													data-kategoriedit="<?= $s['nama_kategori']; ?>"
 													data-kdsatuanedit="<?= $s['kdsatuan']; ?>"
 													data-satuanedit="<?= $s['nama_satuan']; ?>"
-													data-harga_modaledit="<?= $s['harga_modal']; ?>"
-													data-harga_jualedit="<?= $s['harga_jual']; ?>"
+													data-hargaedit="<?= $s['harga']; ?>"
 													data-satuanedit="<?= $s['nama_satuan']; ?>"
 													data-stokedit="<?= $s['stok']; ?>"
 													data-keteranganedit="<?= $s['keterangan']; ?>"
@@ -213,14 +202,8 @@
 								<div class="row">
 									<div class="col-md-6 col-sm-12">
 										<div class="form-group">
-											<label>Harga Modal</label>
-											<input type="number" id="harga_modaledit" name="harga_modaledit" class="form-control" required>
-										</div>
-									</div>
-									<div class="col-md-6 col-sm-12">
-										<div class="form-group">
-											<label>Harga Jual</label>
-											<input type="number" id="harga_jualedit" name="harga_jualedit" class="form-control" required>
+											<label>Harga</label>
+											<input type="number" id="hargaedit" name="hargaedit" class="form-control" required>
 										</div>
 									</div>
 								</div>
@@ -354,16 +337,14 @@
 						var satuanedit = $(this).data('satuanedit');
 						var kdkategoriedit = $(this).data('kdkategoriedit');
 						var kategoriedit = $(this).data('kategoriedit');
-						var harga_modaledit = $(this).data('harga_modaledit');
-						var harga_jualedit = $(this).data('harga_jualedit');
+						var hargaedit = $(this).data('hargaedit');
 						var stokedit = $(this).data('stokedit');
 						var keteranganedit = $(this).data('keteranganedit');
 
 						$('#idedit').val(idedit);
 						$('#kode_barangedit').val(kode_barangedit);
 						$('#nama_barangedit').val(nama_barangedit);
-						$('#harga_modaledit').val(harga_modaledit);
-						$('#harga_jualedit').val(harga_jualedit);
+						$('#hargaedit').val(hargaedit);
 						$('#stokedit').val(stokedit);
 						$('#keteranganedit').val(keteranganedit);
 
