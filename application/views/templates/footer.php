@@ -14,6 +14,8 @@
 	<script src="<?= base_url('assets/deskapp/'); ?>src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
 	<script src="<?= base_url('assets/deskapp/'); ?>src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 	<script src="<?= base_url('assets/deskapp/'); ?>src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-	<script src="<?= base_url('assets/deskapp/'); ?>vendors/scripts/datatable-setting.js"></script></body>
+	<script src="<?= base_url('assets/deskapp/'); ?>vendors/scripts/datatable-setting.js"></script>
+	<script src="<?= base_url('assets/'); ?>js/sweetalert/dist/sweetalert2.min.js"></script>
+	<script src="<?= base_url('assets/'); ?>js/select2.min.js"></script>
 </body>
 </html>

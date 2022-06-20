@@ -1,18 +1,18 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Kategori_barang_model extends CI_Model
+class Satuan_barang_model extends CI_Model
 {
 
     public function read()
     {
-        $query = "SELECT * FROM kategori_barang";
+        $query = "SELECT * FROM satuan_barang";
         return $this->db->query($query)->result_array();
         echo json_encode($query);
     }
-    public function getkategoriselect2($kat)
+    public function getsatuanselect2($sat)
     {
-        $query = "SELECT * FROM kategori_barang WHERE nama_kategori LIKE '%$kat%'";
+        $query = "SELECT * FROM satuan_barang WHERE nama_satuan LIKE '%$sat%'";
         return $this->db->query($query)->result_array();
         echo json_encode($query);
     }

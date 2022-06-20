@@ -5,13 +5,13 @@
 					<div class="col-md-6 col-sm-12">
 						<div class="title">
 							<div class="row">
-							<div class="col-md-8"><h4>Kategori Barang</h4></div>
+								<div class="col-md-8"><h4>Satuan Barang</h4></div>
 							</div>
 						</div>
 						<nav aria-label="breadcrumb" role="navigation">
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="index.html">Master</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Kategori Barang</li>
+								<li class="breadcrumb-item active" aria-current="page">Satuan Barang</li>
 							</ol>
 						</nav>
 					</div>
@@ -26,13 +26,13 @@
 						<div class="modal-dialog modal-dialog-centered">
 							<div class="modal-content">
 								<div class="modal-header">
-									<h4 class="modal-title" id="myLargeModalLabel">Tambah Kategori Barang</h4>
+									<h4 class="modal-title" id="myLargeModalLabel">Tambah Satuan Barang</h4>
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 								</div>
-								<form action="<?= base_url('Kategori_barang/tambah') ?>"  method="POST">
+								<form action="<?= base_url('Satuan_barang/tambah') ?>"  method="POST">
 									<div class="modal-body">
 										<div class="form-group">
-											<input id="nama_kategori" name="nama_kategori" class="form-control" type="text" placeholder="Ketik Nama Kategori">
+											<input id="nama_satuan" name="nama_satuan" class="form-control" type="text" placeholder="Ketik Nama satuan">
 										</div>
 									</div>
 									<div class="modal-footer">
@@ -49,23 +49,23 @@
 						<thead>
 							<tr>
 								<th>No</th>
-								<th>Nama Kategori</th>
+								<th>Nama Satuan</th>
 								<th class="datatable-nosort">Action</th>
 							</tr>
 						</thead>
 						<tbody>
 							<?php $i = 1; ?>
-							<?php foreach ($kategori_barang as $s) : ?>
+							<?php foreach ($satuan_barang as $s) : ?>
 								<tr>
 									<td><?= $i; ?></td>
-									<td><?= $s['nama_kategori']; ?></td>
+									<td><?= $s['nama_satuan']; ?></td>
 									<td>
 										<div class="dropdown">
 											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 												<i class="dw dw-more"></i>
 											</a>
 											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-												<a href="#" name="editkategori" id="editkategori" class="dropdown-item" data-toggle="modal" data-target="#modaledit" data-idedit="<?= $s['id']; ?>" data-nama_kategoriedit="<?= $s['nama_kategori']; ?>" ><i class="dw dw-edit2"></i> Edit</a>
+												<a href="#" name="editsatuan" id="editsatuan" class="dropdown-item" data-toggle="modal" data-target="#modaledit" data-idedit="<?= $s['id']; ?>" data-nama_satuanedit="<?= $s['nama_satuan']; ?>" ><i class="dw dw-edit2"></i> Edit</a>
 												<a data-kode="<?= $s['id']; ?>" href='javascript:void(0)' class="del dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
 											</div>
 										</div>
@@ -83,14 +83,14 @@
 			<div class="modal-dialog modal-dialog-centered">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h4 class="modal-title" id="myLargeModalLabel">Edit Kategori Barang</h4>
+						<h4 class="modal-title" id="myLargeModalLabel">Edit Satuan Barang</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 					</div>
-					<form action="<?= base_url('Kategori_barang/edit') ?>"  method="POST">
+					<form action="<?= base_url('Satuan_barang/edit') ?>"  method="POST">
 						<div class="modal-body">
 							<div class="form-group">
 								<input id="idedit" name="idedit" class="form-control" type="hidden">
-								<input id="nama_kategoriedit" name="nama_kategoriedit" class="form-control" type="text" placeholder="Ketik Nama Kategori">
+								<input id="nama_satuanedit" name="nama_satuanedit" class="form-control" type="text" placeholder="Ketik Nama Satuan">
 							</div>
 						</div>
 						<div class="modal-footer">
@@ -108,18 +108,18 @@
 	
 
 	$(document).ready(function() {
-        $(document).on('click', '#editkategori', function() {
+        $(document).on('click', '#editsatuan', function() {
             var idedit = $(this).data('idedit');
-            var nama_kategoriedit = $(this).data('nama_kategoriedit');
+            var nama_satuanedit = $(this).data('nama_satuanedit');
             $('#idedit').val(idedit);
-            $('#nama_kategoriedit').val(nama_kategoriedit);
+            $('#nama_satuanedit').val(nama_satuanedit);
         })
     })
 
     $(document).on('click', '.del', function(event) {
         event.preventDefault();
         let kode = $(this).attr('data-kode');
-        let delete_url = "<?= base_url(); ?>/Kategori_barang/delete/" + kode;
+        let delete_url = "<?= base_url(); ?>/Satuan_barang/delete/" + kode;
 
         Swal.fire({
             title: 'Hapus Data',

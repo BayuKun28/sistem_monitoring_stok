@@ -22,6 +22,7 @@
 						</a>
 						<ul class="submenu">
 							<li><a href="<?= base_url('Kategori_barang'); ?>">Kategori Barang</a></li>
+							<li><a href="<?= base_url('Satuan_barang'); ?>">Satuan Barang</a></li>
 							<li><a href="<?= base_url('Barang'); ?>">Barang</a></li>
 							<li><a href="<?= base_url('Vendor'); ?>">Vendor</a></li>
 						</ul>
