@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 20, 2022 at 03:44 PM
+-- Generation Time: Jun 21, 2022 at 05:06 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.4.9
 
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `barang` (
 --
 
 INSERT INTO `barang` (`id`, `kode_barang`, `nama_barang`, `kategori`, `satuan`, `harga`, `stok`, `gambar`, `keterangan`) VALUES
-(1, 'BAJUNIKE001', 'BAJU NIKE XL', 1, 1, 120000, 0, 'nike1.jpg', 'BAJU NIH'),
+(1, 'BAJUNIKE001', 'BAJU NIKE XL', 1, 1, 120000, 12, 'nike1.jpg', 'BAJU NIH'),
 (2, 'BAJUNIKE002', 'Baju Nike Putih', 1, 1, 150000, 0, 'nike.jpg', 'Baju Nike Dengan Bahan Katun Yang Lembut dan Dingin'),
 (4, 'KAOS123', 'KAOS', 1, 1, 25000, 0, 'nike2.jpg', 'kaos');
 
@@ -137,6 +137,76 @@ CREATE TABLE IF NOT EXISTS `satuan_barang` (
 
 INSERT INTO `satuan_barang` (`id`, `nama_satuan`) VALUES
 (1, 'PCS');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stok_keluar`
+--
+
+DROP TABLE IF EXISTS `stok_keluar`;
+CREATE TABLE IF NOT EXISTS `stok_keluar` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tanggal` datetime NOT NULL,
+  `kode_barang` varchar(255) NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `keterangan` text NOT NULL,
+  `vendor` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `stok_keluar`
+--
+
+INSERT INTO `stok_keluar` (`id`, `tanggal`, `kode_barang`, `jumlah`, `keterangan`, `vendor`) VALUES
+(1, '2022-06-21 09:49:00', 'BAJUNIKE001', 3, 'Terjual', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stok_masuk`
+--
+
+DROP TABLE IF EXISTS `stok_masuk`;
+CREATE TABLE IF NOT EXISTS `stok_masuk` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tanggal` datetime NOT NULL,
+  `kode_barang` varchar(255) NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `keterangan` text NOT NULL,
+  `vendor` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `stok_masuk`
+--
+
+INSERT INTO `stok_masuk` (`id`, `tanggal`, `kode_barang`, `jumlah`, `keterangan`, `vendor`) VALUES
+(1, '2022-06-21 09:24:00', 'BAJUNIKE001', 10, 'penambahan', 1),
+(2, '2022-06-21 09:37:00', 'BAJUNIKE001', 5, 'penambahan', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `toko`
+--
+
+DROP TABLE IF EXISTS `toko`;
+CREATE TABLE IF NOT EXISTS `toko` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_toko` varchar(255) NOT NULL,
+  `alamat` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `toko`
+--
+
+INSERT INTO `toko` (`id`, `nama_toko`, `alamat`) VALUES
+(1, 'TOKO MERCHANDISE', 'YOGYAKARTA');
 
 -- --------------------------------------------------------
 

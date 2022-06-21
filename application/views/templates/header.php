@@ -26,6 +26,7 @@
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/deskapp/'); ?>src/plugins/datatables/css/dataTables.bootstrap4.min.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/deskapp/'); ?>src/plugins/datatables/css/responsive.bootstrap4.min.css">
 	<link href="<?= base_url('assets/') ?>js/sweetalert/dist/sweetalert2.min.css" rel="stylesheet">
+	<link href="<?= base_url('assets/') ?>datepicker/jquery.datetimepicker.css" rel="stylesheet">
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
@@ -46,7 +47,7 @@
 				<div class="dropdown">
 					<a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 						<span class="user-icon">
-							<img src="<?= base_url('assets/deskapp/'); ?>vendors/images/photo1.jpg" alt="">
+							<img src="<?= base_url('assets/'); ?>user.png" alt="">
 						</span>
 						<span class="user-name"><?= $user['nama']; ?></span>
 					</a>

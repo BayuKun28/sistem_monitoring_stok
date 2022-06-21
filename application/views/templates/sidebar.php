@@ -32,7 +32,7 @@
 							<span class="micon dw dw-library"></span><span class="mtext">Stok</span>
 						</a>
 						<ul class="submenu">
-							<li><a href="<?= base_url('Stok_masuk'); ?>">Monitor Stok</a></li>
+							<li><a href="<?= base_url('Barang'); ?>">Monitor Stok</a></li>
 							<li><a href="<?= base_url('Stok_masuk'); ?>">Stok Masuk</a></li>
 							<li><a href="<?= base_url('Stok_keluar'); ?>">Stok Keluar</a></li>
 						</ul>
@@ -42,9 +42,9 @@
 							<span class="micon dw dw-calendar1"></span><span class="mtext">Laporan</span>
 						</a>
 						<ul class="submenu">
-							<li><a href="<?= base_url('Stok_masuk'); ?>">Rekap Laporan</a></li>
-							<li><a href="<?= base_url('Stok_masuk'); ?>">Laporan Stok Masuk</a></li>
-							<li><a href="<?= base_url('Stok_keluar'); ?>">Laporan Stok Keluar</a></li>
+							<li><a href="<?= base_url('Rekap_laporan'); ?>">Rekap Laporan</a></li>
+							<li><a href="<?= base_url('Laporan_stok_masuk'); ?>">Laporan Stok Masuk</a></li>
+							<li><a href="<?= base_url('Laporan_stok_keluar'); ?>">Laporan Stok Keluar</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">
@@ -52,8 +52,8 @@
 							<span class="micon dw dw-settings1"></span><span class="mtext">Pengaturan</span>
 						</a>
 						<ul class="submenu">
-							<li><a href="ui-buttons.html">Toko</a></li>
-							<li><a href="ui-cards.html">Pengguna</a></li>
+							<li><a href="<?= base_url('Toko'); ?>">Toko</a></li>
+							<li><a href="<?= base_url('Pengguna'); ?>">Pengguna</a></li>
 						</ul>
 					</li>
 				</ul>

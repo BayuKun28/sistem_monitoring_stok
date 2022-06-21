@@ -17,5 +17,6 @@
 	<script src="<?= base_url('assets/deskapp/'); ?>vendors/scripts/datatable-setting.js"></script>
 	<script src="<?= base_url('assets/'); ?>js/sweetalert/dist/sweetalert2.min.js"></script>
 	<script src="<?= base_url('assets/'); ?>js/select2.min.js"></script>
+	<script src="<?= base_url('assets/'); ?>datepicker/jquery.datetimepicker.full.js"></script>
 </body>
 </html>
