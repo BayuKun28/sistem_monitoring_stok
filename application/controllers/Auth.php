@@ -7,7 +7,7 @@ class Auth extends CI_Controller
     {
         parent::__construct();
         $this->load->library('form_validation');
-        // $this->load->model('auth_model');
+        $this->load->model('auth_model');
     }
     public function index()
     {
@@ -52,18 +52,19 @@ class Auth extends CI_Controller
             redirect('auth');
         }
     }
-
-    public function tambah()
+    public function edit()
     {
+        $id = $this->input->post('idedit');
         $data = array(
-            'username' => $this->input->post('username'),
-            'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-            'nama' => $this->input->post('nama'),
-            'role' => 1,
+            'username' => $this->input->post('usernameedit'),
+            'password' => password_hash($this->input->post('passwordedit'), PASSWORD_DEFAULT),
+            'nama' => $this->input->post('namaedit'),
+            'role' => $this->input->post('roleedit'),
             'is_active' => 1
         );
-        $this->db->insert('pengguna', $data);
-        $this->session->set_flashdata('message', 'Berhasil Ditambah');
+        $this->db->where('id',$id);
+        $this->db->update('pengguna', $data);
+        $this->session->set_flashdata('message', 'Berhasil Di Update');
         redirect('Auth/pengguna');
     }
 
@@ -74,6 +75,7 @@ class Auth extends CI_Controller
         $this->session->set_flashdata('message', 'Berhasil Dihapus');
         redirect('Auth/pengguna');
     }
+
     public function pengguna()
     {
         $data['title'] = 'Pengguna';
@@ -81,9 +83,44 @@ class Auth extends CI_Controller
         $data['pengguna'] = $this->auth_model->read();
 
         $this->load->view('templates/header', $data);
-        $this->load->view('templates/topbar', $data);
         $this->load->view('templates/sidebar', $data);
-        $this->load->view('auth/pengguna');
+        $this->load->view('pengguna/index', $data);
+    }
+    public function validasi()
+    {
+        $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[pengguna.username]', [
+            'is_unique' => 'Username Sudah Ada !'
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            $errors = [
+                'username' => form_error('username'),
+            ];
+            $data = [
+                'status' => FALSE,
+                'errors' => $errors
+            ];
+            echo json_encode($data);
+        }else{
+            $this->tambah();
+        }
+    }
+    private function tambah()
+    {
+
+        $data = array(
+            'username' => $this->input->post('username'),
+            'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+            'nama' => $this->input->post('nama'),
+            'role' => $this->input->post('role'),
+            'is_active' => 1
+        );
+        $this->db->insert('pengguna', $data);
+        $data= [
+            'status' => TRUE,
+            'msg' => 'Data Berhasil Ditambah'
+        ];
+        echo json_encode($data);
     }
     public function logout()
     {
