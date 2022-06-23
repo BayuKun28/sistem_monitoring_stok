@@ -32,7 +32,7 @@
 								<form action="<?= base_url('Satuan_barang/tambah') ?>"  method="POST">
 									<div class="modal-body">
 										<div class="form-group">
-											<input id="nama_satuan" name="nama_satuan" class="form-control" type="text" placeholder="Ketik Nama satuan">
+											<input id="nama_satuan" name="nama_satuan" class="form-control" type="text" placeholder="Ketik Nama satuan" required>
 										</div>
 									</div>
 									<div class="modal-footer">
@@ -90,7 +90,7 @@
 						<div class="modal-body">
 							<div class="form-group">
 								<input id="idedit" name="idedit" class="form-control" type="hidden">
-								<input id="nama_satuanedit" name="nama_satuanedit" class="form-control" type="text" placeholder="Ketik Nama Satuan">
+								<input id="nama_satuanedit" name="nama_satuanedit" class="form-control" type="text" placeholder="Ketik Nama Satuan" required>
 							</div>
 						</div>
 						<div class="modal-footer">

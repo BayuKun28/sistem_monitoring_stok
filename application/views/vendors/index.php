@@ -33,11 +33,11 @@
 									<div class="modal-body">
 										<div class="form-group">
 											<label>Nama Vendor</label>
-											<input id="nama_vendor" name="nama_vendor" class="form-control" type="text" placeholder="Ketik Nama Vendor">
+											<input id="nama_vendor" name="nama_vendor" class="form-control" type="text" placeholder="Ketik Nama Vendor" required>
 										</div>
 										<div class="form-group">
 											<label>Alamat Vendor</label>
-											<input id="alamat" name="alamat" class="form-control" type="text" placeholder="Ketik Alamat">
+											<input id="alamat" name="alamat" class="form-control" type="text" placeholder="Ketik Alamat" required>
 										</div>
 									</div>
 									<div class="modal-footer">
@@ -99,11 +99,11 @@
 							<div class="form-group">
 								<input id="idedit" name="idedit" class="form-control" type="hidden">
 								<label>Nama Vendor</label>
-								<input id="nama_vendoredit" name="nama_vendoredit" class="form-control" type="text" placeholder="Ketik Nama Vendor">
+								<input id="nama_vendoredit" name="nama_vendoredit" class="form-control" type="text" placeholder="Ketik Nama Vendor" required>
 							</div>
 							<div class="form-group">
 								<label>Alamat Vendor</label>
-								<input id="alamatedit" name="alamatedit" class="form-control" type="text" placeholder="Ketik Alamat">
+								<input id="alamatedit" name="alamatedit" class="form-control" type="text" placeholder="Ketik Alamat" required>
 							</div>
 						</div>
 						<div class="modal-footer">

@@ -32,7 +32,7 @@
 								<form action="<?= base_url('Kategori_barang/tambah') ?>"  method="POST">
 									<div class="modal-body">
 										<div class="form-group">
-											<input id="nama_kategori" name="nama_kategori" class="form-control" type="text" placeholder="Ketik Nama Kategori">
+											<input id="nama_kategori" name="nama_kategori" class="form-control" type="text" placeholder="Ketik Nama Kategori" required>
 										</div>
 									</div>
 									<div class="modal-footer">
@@ -90,7 +90,7 @@
 						<div class="modal-body">
 							<div class="form-group">
 								<input id="idedit" name="idedit" class="form-control" type="hidden">
-								<input id="nama_kategoriedit" name="nama_kategoriedit" class="form-control" type="text" placeholder="Ketik Nama Kategori">
+								<input id="nama_kategoriedit" name="nama_kategoriedit" class="form-control" type="text" placeholder="Ketik Nama Kategori" required>
 							</div>
 						</div>
 						<div class="modal-footer">

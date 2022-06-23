@@ -30,24 +30,4 @@
 					</div>
 				</div>
 			</div>
-			<div class="row clearfix progress-box">
-				<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-					<div class="card-box pd-30 height-100-p">
-						<div class="progress-box text-center">
-							<input type="text" class="knob dial1" value="80" data-width="120" data-height="120" data-linecap="round" data-thickness="0.12" data-bgColor="#fff" data-fgColor="#1b00ff" data-angleOffset="180" readonly>
-							<h5 class="text-blue padding-top-10 h5">Stok Masuk</h5>
-							<span class="d-block">80% Average <i class="fa fa-line-chart text-blue"></i></span>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-					<div class="card-box pd-30 height-100-p">
-						<div class="progress-box text-center">
-							<input type="text" class="knob dial3" value="90" data-width="120" data-height="120" data-linecap="round" data-thickness="0.12" data-bgColor="#fff" data-fgColor="#f56767" data-angleOffset="180" readonly>
-							<h5 class="text-light-orange padding-top-10 h5">Stok Keluar</h5>
-							<span class="d-block">90% Average <i class="fa text-light-orange fa-line-chart"></i></span>
-						</div>
-					</div>
-				</div>
-			</div>
 	</div>
