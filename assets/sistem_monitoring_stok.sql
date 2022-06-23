@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Jun 21, 2022 at 05:06 PM
--- Server version: 5.7.31
--- PHP Version: 7.4.9
+-- Host: localhost
+-- Generation Time: Jun 23, 2022 at 03:16 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,19 +27,17 @@ SET time_zone = "+00:00";
 -- Table structure for table `barang`
 --
 
-DROP TABLE IF EXISTS `barang`;
-CREATE TABLE IF NOT EXISTS `barang` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `barang` (
+  `id` int(11) NOT NULL,
   `kode_barang` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nama_barang` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `kategori` int(11) NOT NULL,
   `satuan` int(11) NOT NULL,
   `harga` double NOT NULL,
   `stok` int(11) NOT NULL,
-  `gambar` text COLLATE utf8mb4_unicode_ci,
-  `keterangan` text COLLATE utf8mb4_unicode_ci,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `gambar` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `keterangan` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `barang`
@@ -56,12 +54,10 @@ INSERT INTO `barang` (`id`, `kode_barang`, `nama_barang`, `kategori`, `satuan`, 
 -- Table structure for table `kategori_barang`
 --
 
-DROP TABLE IF EXISTS `kategori_barang`;
-CREATE TABLE IF NOT EXISTS `kategori_barang` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nama_kategori` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+CREATE TABLE `kategori_barang` (
+  `id` int(11) NOT NULL,
+  `nama_kategori` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kategori_barang`
@@ -78,12 +74,10 @@ INSERT INTO `kategori_barang` (`id`, `nama_kategori`) VALUES
 -- Table structure for table `level_pengguna`
 --
 
-DROP TABLE IF EXISTS `level_pengguna`;
-CREATE TABLE IF NOT EXISTS `level_pengguna` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nama_level` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+CREATE TABLE `level_pengguna` (
+  `id` int(11) NOT NULL,
+  `nama_level` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `level_pengguna`
@@ -91,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `level_pengguna` (
 
 INSERT INTO `level_pengguna` (`id`, `nama_level`) VALUES
 (1, 'admin'),
-(2, 'operator');
+(2, 'pimpinan');
 
 -- --------------------------------------------------------
 
@@ -99,24 +93,27 @@ INSERT INTO `level_pengguna` (`id`, `nama_level`) VALUES
 -- Table structure for table `pengguna`
 --
 
-DROP TABLE IF EXISTS `pengguna`;
-CREATE TABLE IF NOT EXISTS `pengguna` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `pengguna` (
+  `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `nama` varchar(255) NOT NULL,
-  `level` int(11) NOT NULL,
-  `is_active` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  `role` int(11) NOT NULL,
+  `is_active` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pengguna`
 --
 
-INSERT INTO `pengguna` (`id`, `username`, `password`, `nama`, `level`, `is_active`) VALUES
+INSERT INTO `pengguna` (`id`, `username`, `password`, `nama`, `role`, `is_active`) VALUES
 (1, 'admin', '$2y$10$/I7laWi1mlNFxYSv54EUPOH8MuZhmRWxhE.LaddTK9TSmVe.IHP2C', 'Admin', 1, 1),
-(2, 'petugas', '$2y$10$pwQLe1vob0n8lw8A6/t29Ok.RHxQZ.cBj2E2/GEy8IxDDQKxgR/nq', 'Petugas', 2, 1);
+(2, 'petugas', '$2y$10$Uci0nTmn0n56pgSmmuTtK.6XVWDBi.lSNC7SEJNXkk2ycPbQfAdLO', 'Petugas', 1, 1),
+(4, 'bayu', '$2y$10$oNaIGdcyA2wp7/cXdvaZD.OlIi.WIfWIEI9MXRJXGWM/nELwKQ.FS', 'Bayu Prastyo', 1, 1),
+(5, 'pimpinan', '$2y$10$FWxS7TCNCeB5OVfZZc1WS.bVw2KAID0/VkocrRWS97Wj8uAruPrlO', 'pimpinan', 2, 1),
+(8, 'nurdin', '$2y$10$IAgRyxPWPahkR3o8Tp9EGOwPJl8k9EnC8HyTFIG3NvSBPZC/UrwSG', 'nurdin', 1, 1),
+(12, 'ilyas', '$2y$10$ak3UJrMKYLN1tqdm063yLOfNYQ0Qd97cWvwarQabtMA/dGdAYE3H6', 'Ilyas', 1, 1),
+(36, 'anov', '$2y$10$EZF5mj4meoZVVd9pnRtKY.bOwazDbnha1udXSWBqKOrzZ.8xjs/Vq', 'anov', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -124,12 +121,10 @@ INSERT INTO `pengguna` (`id`, `username`, `password`, `nama`, `level`, `is_activ
 -- Table structure for table `satuan_barang`
 --
 
-DROP TABLE IF EXISTS `satuan_barang`;
-CREATE TABLE IF NOT EXISTS `satuan_barang` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nama_satuan` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+CREATE TABLE `satuan_barang` (
+  `id` int(11) NOT NULL,
+  `nama_satuan` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `satuan_barang`
@@ -144,16 +139,14 @@ INSERT INTO `satuan_barang` (`id`, `nama_satuan`) VALUES
 -- Table structure for table `stok_keluar`
 --
 
-DROP TABLE IF EXISTS `stok_keluar`;
-CREATE TABLE IF NOT EXISTS `stok_keluar` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `stok_keluar` (
+  `id` int(11) NOT NULL,
   `tanggal` datetime NOT NULL,
   `kode_barang` varchar(255) NOT NULL,
   `jumlah` int(11) NOT NULL,
   `keterangan` text NOT NULL,
-  `vendor` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `vendor` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `stok_keluar`
@@ -168,16 +161,14 @@ INSERT INTO `stok_keluar` (`id`, `tanggal`, `kode_barang`, `jumlah`, `keterangan
 -- Table structure for table `stok_masuk`
 --
 
-DROP TABLE IF EXISTS `stok_masuk`;
-CREATE TABLE IF NOT EXISTS `stok_masuk` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `stok_masuk` (
+  `id` int(11) NOT NULL,
   `tanggal` datetime NOT NULL,
   `kode_barang` varchar(255) NOT NULL,
   `jumlah` int(11) NOT NULL,
   `keterangan` text NOT NULL,
-  `vendor` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `vendor` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `stok_masuk`
@@ -193,13 +184,11 @@ INSERT INTO `stok_masuk` (`id`, `tanggal`, `kode_barang`, `jumlah`, `keterangan`
 -- Table structure for table `toko`
 --
 
-DROP TABLE IF EXISTS `toko`;
-CREATE TABLE IF NOT EXISTS `toko` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `toko` (
+  `id` int(11) NOT NULL,
   `nama_toko` varchar(255) NOT NULL,
-  `alamat` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `alamat` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `toko`
@@ -214,13 +203,11 @@ INSERT INTO `toko` (`id`, `nama_toko`, `alamat`) VALUES
 -- Table structure for table `vendor`
 --
 
-DROP TABLE IF EXISTS `vendor`;
-CREATE TABLE IF NOT EXISTS `vendor` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `vendor` (
+  `id` int(11) NOT NULL,
   `nama_vendor` text NOT NULL,
-  `alamat` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `alamat` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `vendor`
@@ -228,6 +215,122 @@ CREATE TABLE IF NOT EXISTS `vendor` (
 
 INSERT INTO `vendor` (`id`, `nama_vendor`, `alamat`) VALUES
 (1, 'PT PETO', 'Gedangan');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `barang`
+--
+ALTER TABLE `barang`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kategori_barang`
+--
+ALTER TABLE `kategori_barang`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `level_pengguna`
+--
+ALTER TABLE `level_pengguna`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pengguna`
+--
+ALTER TABLE `pengguna`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `satuan_barang`
+--
+ALTER TABLE `satuan_barang`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `stok_keluar`
+--
+ALTER TABLE `stok_keluar`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `stok_masuk`
+--
+ALTER TABLE `stok_masuk`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `toko`
+--
+ALTER TABLE `toko`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `vendor`
+--
+ALTER TABLE `vendor`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `barang`
+--
+ALTER TABLE `barang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `kategori_barang`
+--
+ALTER TABLE `kategori_barang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `level_pengguna`
+--
+ALTER TABLE `level_pengguna`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `pengguna`
+--
+ALTER TABLE `pengguna`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- AUTO_INCREMENT for table `satuan_barang`
+--
+ALTER TABLE `satuan_barang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `stok_keluar`
+--
+ALTER TABLE `stok_keluar`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `stok_masuk`
+--
+ALTER TABLE `stok_masuk`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `toko`
+--
+ALTER TABLE `toko`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `vendor`
+--
+ALTER TABLE `vendor`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
