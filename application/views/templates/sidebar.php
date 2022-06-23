@@ -1,8 +1,7 @@
 	<div class="left-side-bar">
 		<div class="brand-logo">
 			<a href="<?= base_url('Dashboard'); ?>">
-				<img src="<?= base_url('assets/deskapp/'); ?>vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
-				<img src="<?= base_url('assets/deskapp/'); ?>vendors/images/deskapp-logo-white.svg" alt="" class="light-logo">
+				<img src="<?= base_url('assets/'); ?>toko.png" alt="" height="72px" width="72px"> E-MONITOR
 			</a>
 			<div class="close-sidebar" data-toggle="left-sidebar-close">
 				<i class="ion-close-round"></i>
@@ -25,7 +24,7 @@
 								<li><a href="<?= base_url('Kategori_barang'); ?>">Kategori Barang</a></li>
 								<li><a href="<?= base_url('Satuan_barang'); ?>">Satuan Barang</a></li>
 								<li><a href="<?= base_url('Barang'); ?>">Barang</a></li>
-								<li><a href="<?= base_url('Vendor'); ?>">Vendor</a></li>
+								<li><a href="<?= base_url('Vendors'); ?>">Vendors</a></li>
 							</ul>
 						</li>
 						<li class="dropdown">

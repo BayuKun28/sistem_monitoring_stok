@@ -5,13 +5,13 @@
 					<div class="col-md-6 col-sm-12">
 						<div class="title">
 							<div class="row">
-								<div class="col-md-8"><h4>Vendor</h4></div>
+								<div class="col-md-8"><h4>Vendors</h4></div>
 							</div>
 						</div>
 						<nav aria-label="breadcrumb" role="navigation">
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="index.html">Master</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Vendor</li>
+								<li class="breadcrumb-item active" aria-current="page">Vendors</li>
 							</ol>
 						</nav>
 					</div>
@@ -29,7 +29,7 @@
 									<h4 class="modal-title" id="myLargeModalLabel">Tambah Vendor</h4>
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 								</div>
-								<form action="<?= base_url('Vendor/tambah') ?>"  method="POST">
+								<form action="<?= base_url('Vendors/tambah') ?>"  method="POST">
 									<div class="modal-body">
 										<div class="form-group">
 											<label>Nama Vendor</label>
@@ -61,7 +61,7 @@
 						</thead>
 						<tbody>
 							<?php $i = 1; ?>
-							<?php foreach ($vendor as $s) : ?>
+							<?php foreach ($vendors as $s) : ?>
 								<tr>
 									<td><?= $i; ?></td>
 									<td><?= $s['nama_vendor']; ?></td>
@@ -94,7 +94,7 @@
 						<h4 class="modal-title" id="myLargeModalLabel">Edit Vendor</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 					</div>
-					<form action="<?= base_url('Vendor/edit') ?>"  method="POST">
+					<form action="<?= base_url('Vendors/edit') ?>"  method="POST">
 						<div class="modal-body">
 							<div class="form-group">
 								<input id="idedit" name="idedit" class="form-control" type="hidden">
@@ -134,7 +134,7 @@
     $(document).on('click', '.del', function(event) {
         event.preventDefault();
         let kode = $(this).attr('data-kode');
-        let delete_url = "<?= base_url(); ?>/Vendor/delete/" + kode;
+        let delete_url = "<?= base_url(); ?>/Vendors/delete/" + kode;
 
         Swal.fire({
             title: 'Hapus Data',

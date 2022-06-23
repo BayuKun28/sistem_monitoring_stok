@@ -29,7 +29,7 @@
 									<h4 class="modal-title" id="myLargeModalLabel">Tambah Kategori Barang</h4>
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 								</div>
-								<form action="<?= base_url('Barang/tambah') ?>" method="POST" enctype="multipart/form-data">
+								<form id="addbarang" action="<?= base_url('Barang/tambah'); ?>" method="POST" enctype="multipart/form-data">
 									<div class="modal-body">
 										<div class="row">
 											<div class="col-md-6 col-sm-12">
@@ -92,7 +92,7 @@
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-										<button type="submit" class="btn btn-primary">Tambah</button>
+										<button id="btn-tambah" type="submit" class="btn btn-primary">Tambah</button>
 									</div>
 								</form>
 							</div>
@@ -244,6 +244,49 @@
 
 			<script type="text/javascript">
 
+				// $(document).ready(function(){
+				// 	$("#addbarang").submit(function(e) {
+				// 		e.preventDefault()
+				// 		$.ajax({
+				// 			url: $(this).attr('action'),
+				// 			type: $(this).attr('method'),
+				// 			dataType: 'json',
+				// 			data: $(this).serialize(),
+				// 			beforeSend: function() {
+				// 				$("#btn-tambah").html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> <i>Loading...</i>')
+				// 			},
+				// 			complete: function() {
+				// 				$("#btn-tambah").html('Tambah')
+				// 			},
+				// 			success: function(res) {
+				// 				if (res.status) {
+				// 					$("#modaltambah").modal("toggle")
+				// 					console.log(res);
+				// 					Swal.fire({
+				// 						position: 'center',
+				// 						icon: 'success',
+				// 						title: res.msg,
+				// 						showConfirmButton: false,
+				// 						timer: 1000
+				// 					})
+				// 					setTimeout(function() {
+				// 						location.reload();
+				// 					}, 1000);
+				// 				} else {
+				// 					$.each(res.errors, function(key, value) {
+				// 						$('[name="' + key + '"]').addClass('is-invalid')
+				// 						$('[name="' + key + '"]').next().text(value)
+				// 					})
+				// 				}
+				// 			}
+				// 		})
+
+				// 		$("#addbarang input").on('keyup', function() {
+				// 			$(this).removeClass('is-valid is-invalid')
+				// 		})
+
+				// 	})
+				// });
 
 				$(document).ready(function() {
 					$(document).on('click', '#editkategori', function() {
@@ -382,31 +425,42 @@
 							}) 
 							</script>
 							";
-						} elseif ($pesan == "Berhasil Di Update") {
+						} elseif ($pesan == "Kode Barang Sudah Ada") {
 							$script = "
 							<script>
 							Swal.fire({
-								icon: 'success',
+								icon: 'error',
 								title: 'Data',
-								text: 'Berhasil Di Update'
+								text: 'Kode Barang Sudah Ada !'
 								}) 
+
 								</script>
 								";
-							} else {
-								$script =
-								"
+							} elseif ($pesan == "Berhasil Di Update") {
+								$script = "
 								<script>
 								Swal.fire({
-									icon: 'error',
+									icon: 'success',
 									title: 'Data',
-									text: 'Gagal'
+									text: 'Berhasil Di Update'
 									}) 
-
 									</script>
 									";
+								} else {
+									$script =
+									"
+									<script>
+									Swal.fire({
+										icon: 'error',
+										title: 'Data',
+										text: 'Gagal'
+										}) 
+
+										</script>
+										";
+									}
+								} else {
+									$script = "";
 								}
-							} else {
-								$script = "";
-							}
-							echo $script;
-							?>
+								echo $script;
+								?>

@@ -26,7 +26,7 @@
 						<h4 class="font-20 weight-500 mb-10 text-capitalize">
 							Selamat Datang Kembali ! <div class="weight-600 font-30 text-blue"><?= $user['nama']; ?></div>
 						</h4>
-						<p class="font-18 max-width-600">Aplikasi Monitoring Stok MAVIS CUSTOM APPAREL & MERCHANDISE</p>
+						<p class="font-18 max-width-600">Aplikasi Monitoring Stok <?= $toko['nama_toko']; ?></p>
 					</div>
 				</div>
 			</div>

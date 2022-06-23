@@ -21,4 +21,9 @@ class Barang_model extends CI_Model
         return $this->db->query($query)->result_array();
         echo json_encode($query);
     }
+    public function cekkodebarang($kdbarang)
+    {
+    	$query = "SELECT count(*) as cekkode from barang where kode_barang = '$kdbarang'";
+    	return $this->db->query($query)->row_array();
+    }
 }

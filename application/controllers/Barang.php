@@ -11,6 +11,7 @@ class Barang extends CI_Controller
             redirect('/');
         }
         $this->load->model('barang_model');
+        $this->load->library('form_validation');
     }
 
     public function index()
@@ -24,31 +25,40 @@ class Barang extends CI_Controller
     }
 
     public function tambah()
-    {
-        $config['upload_path'] = './upload/barang/';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = 20000;
+    {   
+        $kdbarang = $this->input->post('kode_barang');
+        $cek = $this->barang_model->cekkodebarang($kdbarang);
 
-        $this->load->library('upload', $config);
-
-        if (!$this->upload->do_upload('file')) {
-            $message = array('error' => $this->upload->display_errors());
-            echo "<script>alert('$message');</script>";
+        if ($cek['cekkode'] > 0 ) 
+        {
+            $this->session->set_flashdata('message', 'Kode Barang Sudah Ada');
+            redirect('Barang','refresh');
         } else {
-            $fileData = $this->upload->data();
-            $data = array(
-                'kode_barang' => $this->input->post('kode_barang'),
-                'nama_barang' => $this->input->post('nama_barang'),
-                'kategori' => $this->input->post('kategori'),
-                'satuan' => $this->input->post('satuan'),
-                'harga' => $this->input->post('harga'),
-                'stok' => $this->input->post('stok'),
-                'keterangan' => $this->input->post('keterangan'),
-                'gambar' => $fileData['file_name']
-            );
-            $this->db->insert('barang', $data);
-            $this->session->set_flashdata('message', 'Berhasil Ditambah');
-            redirect('Barang');
+            $config['upload_path'] = './upload/barang/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = 20000;
+
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload('file')) {
+                $message = array('error' => $this->upload->display_errors());
+                echo "<script>alert('$message');</script>";
+            } else {
+                $fileData = $this->upload->data();
+                $data = array(
+                    'kode_barang' => $this->input->post('kode_barang'),
+                    'nama_barang' => $this->input->post('nama_barang'),
+                    'kategori' => $this->input->post('kategori'),
+                    'satuan' => $this->input->post('satuan'),
+                    'harga' => $this->input->post('harga'),
+                    'stok' => $this->input->post('stok'),
+                    'keterangan' => $this->input->post('keterangan'),
+                    'gambar' => $fileData['file_name']
+                );
+                $this->db->insert('barang', $data);
+                $this->session->set_flashdata('message', 'Berhasil Ditambah');
+                redirect('Barang','refresh');
+            }
         }
     }
 

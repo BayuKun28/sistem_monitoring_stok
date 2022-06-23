@@ -22,7 +22,7 @@
 				<div class="pd-20">
 					<a href="#" class="btn btn-success" data-toggle="modal" data-target="#modaltambah" type="button">Tambah</a>
 
-					<div class="modal fade" id="modaltambah" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+					<div class="modal fade" id="modaltambah" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 						<div class="modal-dialog modal-dialog-centered">
 							<div class="modal-content">
 								<div class="modal-header">
@@ -113,7 +113,7 @@
 					delay: 250,
 					data: function(params) {
 						return {
-							bar: params.term
+							kod: params.term
 						};
 					},
 					processResults: function(data) {
@@ -139,7 +139,7 @@
 					delay: 250,
 					data: function(params) {
 						return {
-							bar: params.term
+							ven: params.term
 						};
 					},
 					processResults: function(data) {
