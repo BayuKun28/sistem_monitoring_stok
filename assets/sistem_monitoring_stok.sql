@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 23, 2022 at 03:43 PM
+-- Generation Time: Jul 11, 2022 at 08:11 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.4.9
 
@@ -36,20 +36,21 @@ CREATE TABLE IF NOT EXISTS `barang` (
   `satuan` int(11) NOT NULL,
   `harga` double NOT NULL,
   `stok` int(11) NOT NULL,
-  `gambar` text COLLATE utf8mb4_unicode_ci,
   `keterangan` text COLLATE utf8mb4_unicode_ci,
+  `bahan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `barang`
 --
 
-INSERT INTO `barang` (`id`, `kode_barang`, `nama_barang`, `kategori`, `satuan`, `harga`, `stok`, `gambar`, `keterangan`) VALUES
-(1, 'BAJUNIKE001', 'BAJU NIKE XL', 1, 1, 120000, 12, 'nike1.jpg', 'BAJU NIH'),
-(2, 'BAJUNIKE002', 'Baju Nike Putih', 1, 1, 150000, 0, 'nike.jpg', 'Baju Nike Dengan Bahan Katun Yang Lembut dan Dingin'),
-(4, 'KAOS123', 'KAOS', 1, 1, 25000, 5, 'nike2.jpg', 'kaos'),
-(9, 'KAOS1234', 'KAOS AJA', 1, 1, 90000, 0, 'logitechb701.jpg', '123');
+INSERT INTO `barang` (`id`, `kode_barang`, `nama_barang`, `kategori`, `satuan`, `harga`, `stok`, `keterangan`, `bahan`) VALUES
+(1, 'BAJUNIKE001', 'BAJU NIKE XL', 1, 1, 120000, 11, 'BAJU NIH', ''),
+(2, 'BAJUNIKE002', 'Baju Nike Putih', 1, 1, 150000, 0, 'Baju Nike Dengan Bahan Katun Yang Lembut dan Dingin', ''),
+(4, 'KAOS123', 'KAOS', 1, 1, 25000, 5, 'kaos', ''),
+(9, 'KAOS1234', 'KAOS AJA', 1, 1, 90000, 0, '123', ''),
+(10, 'BAJUNIKE0003', 'BAJU NIKE 003', 1, 3, 50000, 11, 'ADAS', 'KATUN');
 
 -- --------------------------------------------------------
 
@@ -123,7 +124,7 @@ INSERT INTO `pengguna` (`id`, `username`, `password`, `nama`, `role`, `is_active
 (5, 'pimpinan', '$2y$10$D/uv2g7T8ze76P6a4xS3sezoFzyned.ZXD.2rc6hniadz1Uo4rw/a', 'pimpinan', 2, 1),
 (8, 'nurdin', '$2y$10$IAgRyxPWPahkR3o8Tp9EGOwPJl8k9EnC8HyTFIG3NvSBPZC/UrwSG', 'nurdin', 1, 1),
 (12, 'ilyas', '$2y$10$ak3UJrMKYLN1tqdm063yLOfNYQ0Qd97cWvwarQabtMA/dGdAYE3H6', 'Ilyas', 1, 1),
-(36, 'anov', '$2y$10$EZF5mj4meoZVVd9pnRtKY.bOwazDbnha1udXSWBqKOrzZ.8xjs/Vq', 'anov', 1, 1);
+(36, 'anovv', '$2y$10$hZbVu1F/XVHRTgqQvZvoSOVICcCEfOUnCQPVhzg6Z2BOhOVZLdTNC', 'anovv', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -161,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `stok_keluar` (
   `keterangan` text NOT NULL,
   `vendor` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `stok_keluar`
@@ -169,7 +170,9 @@ CREATE TABLE IF NOT EXISTS `stok_keluar` (
 
 INSERT INTO `stok_keluar` (`id`, `tanggal`, `kode_barang`, `jumlah`, `keterangan`, `vendor`) VALUES
 (1, '2022-06-21 09:49:00', 'BAJUNIKE001', 3, 'Terjual', 1),
-(2, '2022-06-27 09:49:00', 'KAOS123', 5, 'Terjual', 1);
+(2, '2022-06-27 09:49:00', 'KAOS123', 5, 'Terjual', 1),
+(3, '2022-07-09 21:20:00', 'BAJUNIKE001', 1, 'Terjual', 1),
+(4, '2022-07-11 20:08:00', 'BAJUNIKE0003', 1, 'Terjual', 1);
 
 -- --------------------------------------------------------
 
@@ -186,7 +189,7 @@ CREATE TABLE IF NOT EXISTS `stok_masuk` (
   `keterangan` text NOT NULL,
   `vendor` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `stok_masuk`
@@ -195,7 +198,8 @@ CREATE TABLE IF NOT EXISTS `stok_masuk` (
 INSERT INTO `stok_masuk` (`id`, `tanggal`, `kode_barang`, `jumlah`, `keterangan`, `vendor`) VALUES
 (1, '2022-06-21 09:24:00', 'BAJUNIKE001', 10, 'penambahan', 1),
 (2, '2022-06-21 09:37:00', 'BAJUNIKE001', 5, 'penambahan', 1),
-(3, '2022-06-27 09:47:00', 'KAOS123', 10, 'penambahan', 1);
+(3, '2022-06-27 09:47:00', 'KAOS123', 10, 'penambahan', 1),
+(4, '2022-07-11 20:07:00', 'BAJUNIKE0003', 12, 'penambahan', 1);
 
 -- --------------------------------------------------------
 

@@ -26,7 +26,7 @@
 						<div class="modal-dialog modal-lg modal-dialog-centered">
 							<div class="modal-content">
 								<div class="modal-header">
-									<h4 class="modal-title" id="myLargeModalLabel">Tambah Kategori Barang</h4>
+									<h4 class="modal-title" id="myLargeModalLabel">Tambah Barang</h4>
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 								</div>
 								<form id="addbarang" action="<?= base_url('Barang/tambah'); ?>" method="POST" enctype="multipart/form-data">
@@ -78,8 +78,8 @@
 										<div class="row">
 											<div class="col-md-6 col-sm-12">
 												<div class="form-group">
-													<label>Gambar</label>
-													<input type="file" id="file" name="file" accept=".jpg, .png" required>
+													<label>Bahan</label>
+													<input type="text" id="bahan" name="bahan" class="form-control" required>
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12">
@@ -110,7 +110,7 @@
 								<th>Satuan</th>
 								<th>Harga</th>
 								<th>Stok</th>
-								<th>Gambar</th>
+								<th>Bahan</th>
 								<th>Keterangan</th>
 								<th class="datatable-nosort">Action</th>
 							</tr>
@@ -126,10 +126,24 @@
 									<td><?= $s['nama_satuan']; ?></td>
 									<td><?= number_format($s['harga']);  ?></td>
 									<td><?= $s['stok']; ?></td>
-									<td> <img src="<?= base_url('upload/barang/'). $s['gambar']; ?> " width="72px" height="72px"> </td>
+									<td><?= $s['bahan']; ?></td>
+									<!-- <td> <img src="<?= base_url('upload/barang/'). $s['gambar']; ?> " width="72px" height="72px"> </td> -->
 									<td><?= $s['keterangan']; ?></td>
 									<td>
-										<div class="dropdown">
+										<a href="#" name="editbarang" id="editbarang" class="dropdown-item" data-toggle="modal" data-target="#modaledit" data-idedit="<?= $s['id']; ?>"
+													data-kode_barangedit="<?= $s['kode_barang']; ?>"
+													data-nama_barangedit="<?= $s['nama_barang']; ?>"
+													data-kdkategoriedit="<?= $s['kdkategori']; ?>"
+													data-kategoriedit="<?= $s['nama_kategori']; ?>"
+													data-kdsatuanedit="<?= $s['kdsatuan']; ?>"
+													data-satuanedit="<?= $s['nama_satuan']; ?>"
+													data-hargaedit="<?= $s['harga']; ?>"
+													data-bahanedit="<?= $s['bahan']; ?>"
+													data-satuanedit="<?= $s['nama_satuan']; ?>"
+													data-stokedit="<?= $s['stok']; ?>"
+													data-keteranganedit="<?= $s['keterangan']; ?>"
+													><i class="dw dw-edit2"></i> Edit</a>
+										<!-- <div class="dropdown">
 											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 												<i class="dw dw-more"></i>
 											</a>
@@ -148,7 +162,7 @@
 													><i class="dw dw-edit2"></i> Edit</a>
 													<a data-kode="<?= $s['id']; ?>" href='javascript:void(0)' class="del dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
 												</div>
-											</div>
+											</div> -->
 										</td>
 									</tr>
 									<?php $i++; ?>
@@ -163,7 +177,7 @@
 				<div class="modal-dialog modal-lg modal-dialog-centered">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h4 class="modal-title" id="myLargeModalLabel">Tambah Kategori Barang</h4>
+							<h4 class="modal-title" id="myLargeModalLabel">Edit Barang</h4>
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 						</div>
 						<form action="<?= base_url('Barang/edit') ?>" method="POST" enctype="multipart/form-data">
@@ -206,24 +220,21 @@
 											<input type="number" id="hargaedit" name="hargaedit" class="form-control" required>
 										</div>
 									</div>
-								</div>
-								<div class="row">
 									<div class="col-md-6 col-sm-12">
 										<div class="form-group">
 											<label>Stok</label>
 											<input type="number" id="stokedit" name="stokedit" class="form-control" value="0" readonly="true">
 										</div>
 									</div>
-									<div class="col-md-6 col-sm-12">
-										<div class="form-group">
-											<label>Gambar</label>
-											<p>Biarkan Jika tidak Update Gambar</p>
-											<input type="file" id="fileedit" name="fileedit" accept=".jpg, .png">
-										</div>
-									</div>
 								</div>
 								<div class="row">
-									<div class="col-md-12 col-sm-12">
+									<div class="col-md-6 col-sm-12">
+										<div class="form-group">
+											<label>Bahan</label>
+											<input type="text" id="bahanedit" name="bahanedit" class="form-control" required>
+										</div>
+									</div>
+									<div class="col-md-6 col-sm-12">
 										<div class="form-group">
 											<label>Deskripsi / Keterangan</label>
 											<textarea class="form-control" name="keteranganedit" id="keteranganedit" cols="20" rows="2" placeholder="Ketik Keterangan" required></textarea>
@@ -233,7 +244,7 @@
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-								<button type="submit" class="btn btn-primary">Tambah</button>
+								<button type="submit" class="btn btn-primary">Simpan</button>
 							</div>
 						</form>
 					</div>
@@ -383,6 +394,7 @@
 						var hargaedit = $(this).data('hargaedit');
 						var stokedit = $(this).data('stokedit');
 						var keteranganedit = $(this).data('keteranganedit');
+						var bahanedit = $(this).data('bahanedit');
 
 						$('#idedit').val(idedit);
 						$('#kode_barangedit').val(kode_barangedit);
@@ -390,6 +402,7 @@
 						$('#hargaedit').val(hargaedit);
 						$('#stokedit').val(stokedit);
 						$('#keteranganedit').val(keteranganedit);
+						$('#bahanedit').val(bahanedit);
 
 						var $hasilsatuan = $("<option selected='selected'></option>").val(kdsatuanedit).text(satuanedit)
 						$("#satuanedit").append($hasilsatuan).trigger('change');

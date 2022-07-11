@@ -9,7 +9,8 @@ class Stok_masuk_model extends CI_Model
         $query = "SELECT sm.id,sm.tanggal,sm.jumlah,sm.keterangan,b.kode_barang,b.nama_barang,v.nama_vendor
                     FROM stok_masuk sm
                     LEFT JOIN barang b on sm.kode_barang = b.kode_barang
-                    LEFT JOIN vendor v on sm.vendor  = v.id";
+                    LEFT JOIN vendor v on sm.vendor  = v.id
+                    ORDER BY sm.tanggal ASC";
         return $this->db->query($query)->result_array();
         echo json_encode($query);
     }

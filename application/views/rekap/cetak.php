@@ -10,7 +10,8 @@
     <div style="width:auto; margin: auto;">
         <center>
             <h3>Rekap Laporan </h3>
-            <h4> <?= $tanggalawal; ?> s/d <?= $tanggalakhir; ?></h4>
+            <h4><?= $toko['nama_toko']; ?></h4>
+            <h4>Periode <?= $tanggalawal; ?> s/d <?= $tanggalakhir; ?></h4>
             <table border="1" width="100%" style="border-collapse:collapse;">
                 <thead>
                     <tr>
@@ -40,6 +41,11 @@
                 </tbody>
             </table>
         </center>
+        <br>
+        <div style="width: 35%; text-align: left; float: right;"><center>Mengetahui, <?= $hariini; ?></center> <br>
+            <br> <br> <br> <br>
+            <center> <?= $user['nama']; ?></center>
+        </div>
     </div>
 </body>
 

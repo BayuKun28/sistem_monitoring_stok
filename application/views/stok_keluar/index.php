@@ -195,6 +195,18 @@
 							}) 
 							</script>
 							";
+					} elseif ($pesan == "Barang Keluar Melebihi Stok.!") {
+        // die($pesan);
+						$script = "
+							<script>
+							Swal.fire({
+								icon: 'error',
+								title: 'Data',
+								text: 'Barang Keluar Melebihi Stok.!'
+								}) 
+
+								</script>
+								";
 						} else {
 							$script =
 							"

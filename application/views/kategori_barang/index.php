@@ -60,7 +60,8 @@
 									<td><?= $i; ?></td>
 									<td><?= $s['nama_kategori']; ?></td>
 									<td>
-										<div class="dropdown">
+										<a href="#" name="editkategori" id="editkategori" class="dropdown-item" data-toggle="modal" data-target="#modaledit" data-idedit="<?= $s['id']; ?>" data-nama_kategoriedit="<?= $s['nama_kategori']; ?>" ><i class="dw dw-edit2"></i> Edit</a>
+										<!-- <div class="dropdown">
 											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 												<i class="dw dw-more"></i>
 											</a>
@@ -68,7 +69,7 @@
 												<a href="#" name="editkategori" id="editkategori" class="dropdown-item" data-toggle="modal" data-target="#modaledit" data-idedit="<?= $s['id']; ?>" data-nama_kategoriedit="<?= $s['nama_kategori']; ?>" ><i class="dw dw-edit2"></i> Edit</a>
 												<a data-kode="<?= $s['id']; ?>" href='javascript:void(0)' class="del dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
 											</div>
-										</div>
+										</div> -->
 									</td>
 								</tr>
 								<?php $i++; ?>

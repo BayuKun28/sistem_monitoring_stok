@@ -13,8 +13,7 @@ class Barang_model extends CI_Model
 					sb.nama_satuan,
 					b.harga,
 					b.stok,
-					b.gambar,
-					b.keterangan
+					b.keterangan,b.bahan
 				FROM barang b 
 				LEFT JOIN kategori_barang kb on (b.kategori = kb.id)
 				LEFT JOIN satuan_barang sb on (b.satuan = sb.id)";

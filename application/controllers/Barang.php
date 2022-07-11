@@ -34,31 +34,19 @@ class Barang extends CI_Controller
             $this->session->set_flashdata('message', 'Kode Barang Sudah Ada');
             redirect('Barang','refresh');
         } else {
-            $config['upload_path'] = './upload/barang/';
-            $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size'] = 20000;
-
-            $this->load->library('upload', $config);
-
-            if (!$this->upload->do_upload('file')) {
-                $message = array('error' => $this->upload->display_errors());
-                echo "<script>alert('$message');</script>";
-            } else {
-                $fileData = $this->upload->data();
-                $data = array(
-                    'kode_barang' => $this->input->post('kode_barang'),
-                    'nama_barang' => $this->input->post('nama_barang'),
-                    'kategori' => $this->input->post('kategori'),
-                    'satuan' => $this->input->post('satuan'),
-                    'harga' => $this->input->post('harga'),
-                    'stok' => $this->input->post('stok'),
-                    'keterangan' => $this->input->post('keterangan'),
-                    'gambar' => $fileData['file_name']
-                );
-                $this->db->insert('barang', $data);
-                $this->session->set_flashdata('message', 'Berhasil Ditambah');
-                redirect('Barang','refresh');
-            }
+            $data = array(
+                'kode_barang' => $this->input->post('kode_barang'),
+                'nama_barang' => $this->input->post('nama_barang'),
+                'kategori' => $this->input->post('kategori'),
+                'satuan' => $this->input->post('satuan'),
+                'harga' => $this->input->post('harga'),
+                'stok' => $this->input->post('stok'),
+                'bahan' => $this->input->post('bahan'),
+                'keterangan' => $this->input->post('keterangan')
+            );
+            $this->db->insert('barang', $data);
+            $this->session->set_flashdata('message', 'Berhasil Ditambah');
+            redirect('Barang','refresh');
         }
     }
 
@@ -73,42 +61,19 @@ class Barang extends CI_Controller
     public function edit()
     {
         $id = $this->input->post('idedit');
-        $config['upload_path'] = './upload/barang/';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = 20000;
-
-        $this->load->library('upload', $config);
-
-        if (!$this->upload->do_upload('fileedit')) {
-            $data = array(
-                'kode_barang' => $this->input->post('kode_barangedit'),
-                'nama_barang' => $this->input->post('nama_barangedit'),
-                'kategori' => $this->input->post('kategoriedit'),
-                'satuan' => $this->input->post('satuanedit'),
-                'harga' => $this->input->post('hargaedit'),
-                'stok' => $this->input->post('stokedit'),
-                'keterangan' => $this->input->post('keteranganedit')
-            );
-            $this->db->where('id', $id);
-            $this->db->update('barang', $data);
-            $this->session->set_flashdata('message', 'Berhasil Di Update');
-            redirect('Barang');
-        } else {
-            $fileData = $this->upload->data();
-            $data = array(
-                'kode_barang' => $this->input->post('kode_barangedit'),
-                'nama_barang' => $this->input->post('nama_barangedit'),
-                'kategori' => $this->input->post('kategoriedit'),
-                'satuan' => $this->input->post('satuanedit'),
-                'harga' => $this->input->post('hargaedit'),
-                'stok' => $this->input->post('stokedit'),
-                'keterangan' => $this->input->post('keteranganedit'),
-                'gambar' => $fileData['file_name']
-            );
-            $this->db->where('id', $id);
-            $this->db->update('barang', $data);
-            $this->session->set_flashdata('message', 'Berhasil Di Update');
-            redirect('Barang');
-        }
+        $data = array(
+            'kode_barang' => $this->input->post('kode_barangedit'),
+            'nama_barang' => $this->input->post('nama_barangedit'),
+            'kategori' => $this->input->post('kategoriedit'),
+            'satuan' => $this->input->post('satuanedit'),
+            'harga' => $this->input->post('hargaedit'),
+            'stok' => $this->input->post('stokedit'),
+            'bahan' => $this->input->post('bahanedit'),
+            'keterangan' => $this->input->post('keteranganedit')
+        );
+        $this->db->where('id', $id);
+        $this->db->update('barang', $data);
+        $this->session->set_flashdata('message', 'Berhasil Di Update');
+        redirect('Barang');
     }
 }

@@ -85,7 +85,9 @@
 										echo "Pimpinan";
 									} ?></td>
 									<td>
-										<div class="dropdown">
+										<a href="#" name="editpengguna" id="editpengguna" class="dropdown-item" data-toggle="modal" data-target="#modaledit" data-idedit="<?= $s['id']; ?>" data-namaedit="<?= $s['nama']; ?>"
+											data-usernameedit="<?= $s['username']; ?>" data-roleedit="<?= $s['role']; ?>" ><i class="dw dw-edit2"></i> Edit</a>
+										<!-- <div class="dropdown">
 											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 												<i class="dw dw-more"></i>
 											</a>
@@ -95,7 +97,7 @@
 													<a data-kode="<?= $s['id']; ?>" href='javascript:void(0)' class="del dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
 												</div>
 											</div>
-										</td>
+										</td> -->
 									</tr>
 									<?php $i++; ?>
 								<?php endforeach ?>

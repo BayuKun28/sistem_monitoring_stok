@@ -13,6 +13,7 @@ class Laporan_stok_masuk extends CI_Controller
             redirect('/');
         }
         $this->load->model('laporan_stok_masuk_model');
+        $this->load->model('toko_model');
     }
 
     public function index()
@@ -41,6 +42,26 @@ class Laporan_stok_masuk extends CI_Controller
         $this->load->view('templates/sidebar', $data);
         $this->load->view('laporan_stok_masuk/index', $data);
     }
+
+    public function tanggal_indo($tanggal)
+    {
+        $bulan = array(
+            1 =>   'Januari',
+            'Februari',
+            'Maret',
+            'April',
+            'Mei',
+            'Juni',
+            'Juli',
+            'Agustus',
+            'September',
+            'Oktober',
+            'November',
+            'Desember'
+        );
+        $split = explode('-', $tanggal);
+        return $split[2] . ' ' . $bulan[(int)$split[1]] . ' ' . $split[0];
+    }
     public function cetak()
     {
         $data['title'] = 'Laporan Stok Masuk';
@@ -51,6 +72,8 @@ class Laporan_stok_masuk extends CI_Controller
         $data['tanggalawal'] = date('d F Y', strtotime($xtanggalawal));
         $data['tanggalakhir'] = date('d F Y', strtotime($xtanggalakhir));
         $data['stok'] = $this->laporan_stok_masuk_model->read($xtanggalawal,$xtanggalakhir);
+        $data['toko'] = $this->toko_model->read();
+        $data['hariini'] = $this->tanggal_indo(date('Y-m-d'));
 
         $dompdf = new Dompdf();
         $dompdf->setPaper('A4', 'Portrait');

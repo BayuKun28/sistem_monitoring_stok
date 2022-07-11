@@ -29,20 +29,26 @@ class Stok_keluar extends CI_Controller
         $kdbarang = $this->input->post('kode_barang');
         $jumlah = $this->input->post('jumlah');
         $stok = $this->stok_masuk_model->getStok($kdbarang)->stok;
-        $rumus = max($stok - $jumlah, 0);
-        $addStok = $this->stok_masuk_model->addStok($kdbarang, $rumus);
 
-        $tanggal = new DateTime($this->input->post('tanggal'));
-        $data = array(
-            'tanggal' => $tanggal->format('Y-m-d H:i:s'),
-            'kode_barang' => $kdbarang,
-            'jumlah' => $jumlah,
-            'keterangan' => $this->input->post('keterangan'),
-            'vendor' => $this->input->post('vendor')
-        );
+        if ($stok < $jumlah) {
+            $this->session->set_flashdata('message', 'Barang Keluar Melebihi Stok.!');
+            redirect('Stok_keluar');
+        }else{
+            $rumus = max($stok - $jumlah, 0);
+            $addStok = $this->stok_masuk_model->addStok($kdbarang, $rumus);
 
-        $this->db->insert('stok_keluar', $data);
-        $this->session->set_flashdata('message', 'Berhasil Ditambah');
-        redirect('Stok_keluar');
+            $tanggal = new DateTime($this->input->post('tanggal'));
+            $data = array(
+                'tanggal' => $tanggal->format('Y-m-d H:i:s'),
+                'kode_barang' => $kdbarang,
+                'jumlah' => $jumlah,
+                'keterangan' => $this->input->post('keterangan'),
+                'vendor' => $this->input->post('vendor')
+            );
+
+            $this->db->insert('stok_keluar', $data);
+            $this->session->set_flashdata('message', 'Berhasil Ditambah');
+            redirect('Stok_keluar');
+        }
     }
 }
